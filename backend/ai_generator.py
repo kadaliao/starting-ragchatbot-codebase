@@ -29,11 +29,11 @@ All responses must be:
 Provide only the direct answer to what was asked.
 """
     
-    def __init__(self, api_key: str, model: str):
-        self.client = anthropic.Anthropic(api_key=api_key)
+    def __init__(self, api_key: str, model: str, base_url: str | None = None):
+        self.client = anthropic.Anthropic(api_key=api_key, base_url=base_url)
         self.model = model
         
-        # Pre-build base API parameters
+        # 预构建基础 API 参数
         self.base_params = {
             "model": self.model,
             "temperature": 0,
